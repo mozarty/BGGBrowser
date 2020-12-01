@@ -8,15 +8,15 @@ import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.ActivityRetainedComponent
+import dagger.hilt.android.components.ApplicationComponent
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 
 @Module
-@InstallIn(ActivityRetainedComponent::class)
+@InstallIn(ApplicationComponent::class)
 class RetrofitBuilderModule {
 
     @Provides
@@ -43,6 +43,7 @@ class RetrofitBuilderModule {
         return Retrofit.Builder()
             .baseUrl(baseURL)
             .client(okHttpClient)
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(
                 TikXmlConverterFactory.create(
                     TikXml.Builder()
@@ -54,6 +55,6 @@ class RetrofitBuilderModule {
     }
 
     companion object {
-        const val baseURL = "https://www.boardgamegeek.com/xmlapi/"
+        const val baseURL = "https://www.boardgamegeek.com/xmlapi2/"
     }
 }
