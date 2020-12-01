@@ -1,3 +1,3 @@
 # BGGBrowser
 
-![alt text](https://github.com/mozarty/BGGBrowser/blob/main/screenshot.jpg?raw=true)
+![Screenshot](https://i.postimg.cc/GpRnjk3k/screenshot.png?raw=true)
